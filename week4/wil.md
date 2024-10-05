@@ -39,6 +39,6 @@ cd == change direction
 activate-가상환경 ON
 deactivate- 가상환경 OFF
 
-DB에 PK(point key)가 만들어지지 않는다면 DB가 임의로 INPUT 순서대로 일련번호를 생성한다!
+DB에 PK(point key)가 만들어지지 않는다면 DB가 임의로 INPUT 순서대로 일련번호를 생성한다!!!
 
 
