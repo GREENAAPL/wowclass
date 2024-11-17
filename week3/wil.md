@@ -1,42 +1,44 @@
 <3주차>
 
--MVC 패턴
+-동적 html 생성
 
-        View(응답 내용 관리)
-        |
-user->Controller(흐름 제어)<->Model(데이터 저장,검색 관리)
+views.py
 
--django 
+def index(request):
+    name='kim'
+    context = {'name': name}
+    return render(request, 'index.html', context)
 
-        templates(응답 내용 관리)
-        |
-user->urls.py(view 목적지 찾아 전달)->view.py(흐름 제어)<->model.py(데이터 저장,검색 관리)
+qustions.template
 
-- 프로젝트 vs 어플리케이션
+<p>{{name}}씨 반갑습니다</p>
 
-프로젝트는 우리가 장고로 만드는 소프트웨어 전체
+-질문 게시판 만들기
 
-어플리케이션은 프로젝트 내에서 기능별로 쪼개좋은 단위
+models.py
 
-하나의 프로젝트는 보통 여러개의 어플리케이션으로 이루어져있다
+from django.db import models
 
--settings.py 
 
-장고 설정에 관한 내용을 담고 있음
-DB setting 언어, 시간 설정
+class Question(models.Mode):
+    subject = models.CharFiels(max_length=200)
+    content = models.TextField()
+    created_date = models.DateTimeField()
 
-<p> My cat is very grumpy </p>
-(opening tag)               (closing tag)
+makemigrations
+> python manage.py makemigrations
+> inside questions folder migrations/0001_initial.py 생성
+> python manage.py migrate
+> inside project folder db.sqlite3 생성
 
-My cat is very grumpy = content
-<p> My cat is very grumpy </p> = element
+<cmd입력키>
+cd.. 상위집단으로 이동
+cd project project 폴더로 이동
+cd == change direction
 
-html은 우리가 보는 웹페이지가 어떻게 구조화되어 있는지 브라우저로 하여금 알 수 있도록 하는 마크업 언어
+activate-가상환경 ON
+deactivate- 가상환경 OFF
 
-태그를 이용해 내용을 꾸미거나 기능을 추가한다.
-
--manage.py
-
-터미널을 이용해 미리 작성된 명령을 실행할 수 있게 해준다 + sys.path에 managy.py가 위치한 경로를 추가한다
+DB에 PK(point key)가 만들어지지 않는다면 DB가 임의로 INPUT 순서대로 일련번호를 생성한다
 
 
